@@ -1,0 +1,10 @@
+Jackeline,Hong,111,99.9,90.1,95.3
+Donny,Nguyen,432,90.0,93.0,98.1
+Paulina,Faithe,353,67.0,64.5,79.8
+Joni,Missy,788,95.6,80.1,97.6
+Kristie,Wilkie,999,99.1,78.4,70.7
+Ella,Laurena,101,54.0,69.0,75.5
+Junior,Vera,113,84.0,90.9,100.2
+Connell,Merton,432,52.0,76.2,70.6
+Malcom,Joi,567,99.4,92.1,97.5
+Kayla,Euell,266,90.2,85.5,100.0

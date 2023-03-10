@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 import java.util.Scanner;
 
 public class StudentGradeDriver {
@@ -28,66 +27,110 @@ public class StudentGradeDriver {
         studentArr[9] = s10;
 
         StudentGradeMenu list = new StudentGradeMenu();
+        writeStudents(studentArr); 
+        
         try {
             list.menu();
             
         } catch (Exception e) {
             System.out.println("Error" + e);
             }
-    
-        writeStudents(studentArr); //styudent arary paramter!!!!!!!!!!!!!!!
-        readStudents(studentArr);   
-        }
+        readStudents(); 
 
+        }
+    //write method
     public static void writeStudents(StudentGrade [] studentArr) throws IOException {
         File file = new File("studentGrades.txt");
         FileWriter stream = new FileWriter(file);
         PrintWriter output = new PrintWriter(stream);
-
         for (int i = 0; i < studentArr.length; i++) {
             output.println((studentArr[i].state()));
             }
             output.close();
             }
    
+    //read method
+    public static StudentGrade[] readStudents() throws IOException {
+        File readFile = new File("studentGrades.txt");
+        Scanner scan = new Scanner(readFile);
 
-    public static void readStudents(StudentGrade [] studentArr) throws IOException {
-        File file1 = new File("studentGrades.txt");
-        FileWriter stream1 = new FileWriter(file1);
-        Scanner scan = new Scanner(file1);
         int info = 0;
-            while (scan.hasNext()) {
-                String line = scan.nextLine();
-                studentArr[info] = new StudentGrade(line);
-                info = info + 1;
-                }
-                scan.close();
-        System.out.println("File has " + info + " students");
-            for(int j = 0; j < info; j++) {
-                studentArr[j].state();
-                }
+        StudentGrade[] studentArr = new StudentGrade[10];
+        while (scan.hasNext()) {
+            String line = scan.nextLine();
+            StudentGrade student = new StudentGrade("", "", 0, 0, 0, 0);
+            studentArr[info] = student.parseStudentGrade(line);
+            info = info + 1;
             }
-
-    public static int linearSearch(StudentGrade[] studentArr, int val) {
-        for (int i = 0; i < studentArr.length; i++) {
-            System.out.println("THis is I of the array: " + studentArr[i]);
-        if (val == studentArr[i].IDnum) {
-            System.out.println("Student account at index: " + i);
-            return i;
-            }
+            scan.close();
+            return studentArr;
         }
+    public void reviewStudents() throws IOException {
+        StudentGrade [] reviewArray = readStudents();
+        for (int r = 0; r < reviewArray.length; r ++){
+            System.out.println(reviewArray[r].firstName + " " + reviewArray[r].lastName + " " + reviewArray[r].IDnum);
+        }
+    }
+    //linear Search
+    public int linearSearch() throws IOException {
+        StudentGrade [] studentArr = readStudents();
+        System.out.println("Type in the ID number that you would like to search for: ");
+        Scanner search = new Scanner(System.in);
+        int val = (search.nextInt());
+
+        for (int i = 0; i < studentArr.length; i++) {
+            if (val == studentArr[i].IDnum) {
+                System.out.print("Student ID number is at index " + i + ",");
+                System.out.println(" Student is " + studentArr[i].firstName + " " + studentArr[i].lastName + " " + "(ID number " + studentArr[i].IDnum + ")");
+               
+                return i;
+                }
+            }
         System.out.println("No ID number found");
         return -1;
        }
+    //bubble sort
+    public StudentGrade[] bubbleSort() throws IOException {
+        StudentGrade [] testGradesArr = readStudents();
+        System.out.println("\nTest grades before sort: ");
+        for (int q = 0; q < testGradesArr.length; q ++){
+            System.out.println(testGradesArr[q].firstName + " " + testGradesArr[q].lastName + ": " + testGradesArr[q].testGrade);
+        }
 
-    public static void quit() {
+        for (int a = 0; a < (testGradesArr.length - 1); a++) {
+            for(int b = 0; b < (testGradesArr.length - 1); b++) { 
+                if (testGradesArr[b].testGrade > testGradesArr[b + 1].testGrade){
+                    double swap = testGradesArr[b].testGrade;
+                    testGradesArr[b].testGrade = testGradesArr[b + 1].testGrade;
+                    testGradesArr[b + 1].testGrade = swap;
+                }
+            }
+        }
+
+        System.out.println("\nAfter sort: ");
+        for(int after = 0; after < testGradesArr.length; after ++){
+            System.out.println(testGradesArr[after].firstName
+             + " " + testGradesArr[after].lastName + ": "
+             + testGradesArr[after].testGrade);
+        }
+        return testGradesArr;
+        
+    } 
+
+    public static AddStudent() {
+        
+    }
+    
+    // quit
+    public void quit() {
         System.out.println("Exiting program...");
         System.exit(0);
         }
-        public static void pause() {
-            Scanner keyIn = new Scanner(System.in);
-            System.out.println("Press to continue");
-            keyIn.nextLine();
+
+     public void pause() {
+        Scanner keyIn = new Scanner(System.in);
+        System.out.println("\nPress enter continue");
+        keyIn.nextLine();
         }
     }
 

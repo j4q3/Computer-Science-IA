@@ -17,7 +17,7 @@ public class StudentGrade {
    }
 
 
-   public StudentGrade(String line) {
+   public StudentGrade parseStudentGrade(String line) {
        String student;
        //first name
        int location = 0;
@@ -25,14 +25,14 @@ public class StudentGrade {
        location = line.indexOf(",", start);
        student = line.substring(start, location);
        String fName = student;
-       System.out.println(firstName);
+
 
 
        //last name
        start = location + 1;
        location = line.indexOf(",", start);
        String lName = line.substring(start, location);
-       System.out.println(lastName);
+  
 
 
        //ID number
@@ -40,7 +40,7 @@ public class StudentGrade {
        location = line.indexOf(",", start);
        student = line.substring(start, location);
        int ID = Integer.parseInt(student);
-       System.out.println(IDnum);
+      
 
 
        //Classwork Grade
@@ -48,7 +48,7 @@ public class StudentGrade {
        location = line.indexOf(",", start);
        student = line.substring(start, location);
        double cw = Double.parseDouble(student);
-       System.out.println(classworkGrade);
+       
 
 
        //quiz grade
@@ -56,7 +56,7 @@ public class StudentGrade {
        location = line.indexOf(",", start);
        student = line.substring(start, location);
        double qg = Double.parseDouble(student);
-       System.out.println(quizGrade);
+    
 
 
        //test grade
@@ -64,30 +64,16 @@ public class StudentGrade {
        location = line.indexOf(",", start);
        student = line.substring(start);
        double tg = Double.parseDouble(student);
-       System.out.print(testGrade + "\n");
 
-
-       //student_grade(fName, lName, ID, cw, qg, tg);
+       
+       StudentGrade object = new StudentGrade(fName, lName, ID, cw, qg, tg);
+       return object;
    }
-
-
-
+   
 
    public String state() {
        String student = (firstName + "," + lastName + "," + IDnum + "," + classworkGrade + "," + quizGrade + "," + testGrade);
-
-
        return student;
    }
-//    public String Label() {
-//        String labels = ("Student First Name: " + firstName + "," +
-//                " Last Name: " + lastName + "," +
-//                " ID number: " + IDnum + "," +
-//                " Classwork Grade: " + classworkGrade + "," +
-//                " Quiz Grade: " + quizGrade + "," +
-//                " Test Grade: " + testGrade);
-//        return labels;
-//    }
-
 
 }
