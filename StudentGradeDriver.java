@@ -68,7 +68,7 @@ public class StudentGradeDriver {
     public void reviewStudents() throws IOException {
         StudentGrade [] reviewArray = readStudents();
         for (int r = 0; r < reviewArray.length; r ++){
-            System.out.println(reviewArray[r].firstName + " " + reviewArray[r].lastName + " " + reviewArray[r].IDnum);
+            System.out.println(reviewArray[r].firstName + " " + reviewArray[r].lastName + "\nID number: " + reviewArray[r].IDnum);
         }
     }
     //linear Search
@@ -107,7 +107,7 @@ public class StudentGradeDriver {
             }
         }
 
-        System.out.println("\nAfter sort: ");
+        System.out.println("\nTest grades after sort: ");
         for(int after = 0; after < testGradesArr.length; after ++){
             System.out.println(testGradesArr[after].firstName
              + " " + testGradesArr[after].lastName + ": "
@@ -116,10 +116,90 @@ public class StudentGradeDriver {
         return testGradesArr;
         
     } 
+    public void AverageLetterGrade() throws IOException{
+        StudentGrade [] avgGradeArr = readStudents();
+        int length = 3;
+        double sumGrade = 0;
+        double average = 0;
 
-    public static AddStudent() {
+        for (int avg = 0; avg < avgGradeArr.length; avg ++) {
+            sumGrade = avgGradeArr[avg].classworkGrade += avgGradeArr[avg].quizGrade += avgGradeArr[avg].testGrade;
+            average = sumGrade / length;
+            if (average > 93){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "A" );
+            } else if (average > 90){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "A-");
+            } else if (average > 87){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "B+");
+            } else if (average > 83){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "B");
+            } else if (average > 80){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "B-");
+            } else if (average > 77){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "C+");
+                System.out.println(" - This student qualifies for a retake.");
+            } else if (average > 73){
+               System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "C");
+               System.out.println(" - This student qualifies for a retake.");
+            } else if (average > 70){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "C-");
+                System.out.println(" - This student qualifies for a retake.");
+            } else if (average > 67) {
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "D+");
+                System.out.println(" - This student qualifies for a retake.");
+            } else if (average > 64) {
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "D");
+                System.out.println(" - This student qualifies for a retake.");
+            } else if (average >= 64){
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "F");
+                System.out.println(" - This student qualifies for a retake.");
+            } else if (average < 64) {
+                System.out.println(avgGradeArr[avg].firstName + " " + avgGradeArr[avg].lastName + "'s letter grade is: " + "F");
+                System.out.println(" - This student qualifies for a retake.");
+            }
         
+        }
+
     }
+    public void AddStudent() throws IOException{
+        StudentGrade [] addStudentArr = readStudents();
+        StudentGrade[] addArray = new StudentGrade[addStudentArr.length + 1];
+        Scanner userInput = new Scanner(System.in);
+        for(int c = 0; c < addStudentArr.length; c++) {
+            addArray[c] = addStudentArr[c];
+        }
+
+        for (int add = 0; add < 1; add ++) {
+            System.out.println("What is the students first name?: ");
+            String firstName = userInput.nextLine();
+
+            System.out.println("What is the students last name?: ");
+            String lastName = userInput.nextLine();
+
+            System.out.println("What is the students ID number? (3 digits): ");
+            int IDnum = userInput.nextInt();
+            userInput.nextLine();
+
+            System.out.println("What is the students overall classwork grade? (60-100): ");
+            double classworkGrade = userInput.nextDouble();
+            userInput.nextLine();
+
+            System.out.println("What is the students overall quiz grade? (50-100): ");
+            double quizGrade = userInput.nextDouble();
+            userInput.nextLine();
+
+            System.out.println("What is the students overall testGrade? (50-100): ");
+            double testGrade = userInput.nextDouble();
+            userInput.nextLine();
+            addArray[addStudentArr.length] = new StudentGrade(firstName, lastName, IDnum, classworkGrade, quizGrade, testGrade);
+
+        }
+            for(int pp = 0; pp < addArray.length; pp++){
+                System.out.println(addArray[pp]);
+            }
+            writeStudents(addArray);
+    
+        }
     
     // quit
     public void quit() {

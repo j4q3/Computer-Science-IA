@@ -17,8 +17,7 @@ public class StudentGradeMenu {
             revStudents.reviewStudents();
             pause1.pause();
 
-         }
-           if (choice == 2) {
+         } else if (choice == 2) {
             StudentGradeDriver LS = new StudentGradeDriver();
             LS.linearSearch();
             pause1.pause();
@@ -27,8 +26,14 @@ public class StudentGradeMenu {
             StudentGradeDriver Sort = new StudentGradeDriver();
             Sort.bubbleSort();
             pause1.pause();
-         // } else if (choice == 3) {
-         // }
+         } else if (choice == 4) {
+            StudentGradeDriver AvgGrade = new StudentGradeDriver();
+            AvgGrade.AverageLetterGrade();
+            pause1.pause();
+         } else if (choice == 5) {
+            StudentGradeDriver addStudent = new StudentGradeDriver();
+            addStudent.AddStudent();
+            pause1.pause();
          } else if (choice == 6) {
             StudentGradeDriver quitProgram = new StudentGradeDriver();
             quitProgram.quit();
