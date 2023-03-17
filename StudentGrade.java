@@ -1,3 +1,4 @@
+//StudentGrade class 
 public class StudentGrade {
    String firstName = "";
    String lastName = "";
@@ -16,7 +17,7 @@ public class StudentGrade {
        this.testGrade = testGrade;
    }
 
-
+//parseStudentGrades parses values from the text file and turns them from strings back into what they originally were, in this case integers and doubles.
    public StudentGrade parseStudentGrade(String line) {
        String student;
        //first name
@@ -70,7 +71,7 @@ public class StudentGrade {
        return object;
    }
    
-
+   // State method combines all of the elements into a variable.
    public String state() {
        String student = (firstName + "," + lastName + "," + IDnum + "," + classworkGrade + "," + quizGrade + "," + testGrade);
        return student;
