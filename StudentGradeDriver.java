@@ -75,9 +75,9 @@ public class StudentGradeDriver {
         return studentArr;
     }
 
-    // ReviewStudents method reviews students in the array and provides the ID
+    // reviewStudents method reviews students in the array and provides the ID
     // number. The ID number is later utilized for other methods.
-    public void ReviewStudents() throws IOException {
+    public void reviewStudents() throws IOException {
         StudentGrade[] reviewArray = readStudents();
         for (int r = 0; r < reviewArray.length; r++) {
             if (reviewArray[r] != null) { //
@@ -87,9 +87,9 @@ public class StudentGradeDriver {
         }
     }
 
-    // LinearSearch method allows the user to enter an ID number to search into the
+    // linearSearch method allows the user to enter an ID number to search into the
     // array.
-    public int LinearSearch() throws IOException {
+    public int linearSearch() throws IOException {
         StudentGrade[] studentArr = readStudents();
         System.out.println("Type in the ID number that you would like to find: ");
         Scanner search = new Scanner(System.in);
@@ -110,8 +110,8 @@ public class StudentGradeDriver {
         return -1;
     }
 
-    // BubbleSort method sorts through the test grades of all of the students and returns the numerical order.
-    public StudentGrade[] BubbleSort() throws IOException {
+    // bubbleSort method sorts through the test grades of all of the students and returns the numerical order.
+    public StudentGrade[] bubbleSort() throws IOException {
         StudentGrade[] testGradesArr = readStudents();
         System.out.println("\nTest grades before sort: ");
         for (int q = 0; q < testGradesArr.length; q++) {
@@ -142,13 +142,14 @@ public class StudentGradeDriver {
         }
         return testGradesArr;
     }
-    // AverageLetterGrade calculates the letter grade from the average classwork, quiz, and test grade.
-    public void AverageLetterGrade() throws IOException {
+    // averageLetterGrade calculates the letter grade from the average classwork, quiz, and test grade.
+    public void averageLetterGrade() throws IOException {
         StudentGrade[] avgGradeArr = readStudents();
         System.out.println("Who's grade would you like to find?" + "\nEnter ID number of student: ");
+        
         Scanner load = new Scanner(System.in);
         int amount = (load.nextInt());
-
+        
         int length = 3;
         double sumGrade = 0;
         double average = 0;
@@ -208,9 +209,9 @@ public class StudentGradeDriver {
             }
         }
     }
-    // AddStudent method allows the user to add another student to the array.
+    // addStudent method allows the user to add another student to the array.
     // The maximum amount of students in a class is 30.
-    public void AddStudent() throws IOException {
+    public void addStudent() throws IOException {
         StudentGrade[] addStudentArr = readStudents();
         StudentGrade[] addArray = new StudentGrade[addStudentArr.length + 1];
         Scanner userInput = new Scanner(System.in);
@@ -225,7 +226,7 @@ public class StudentGradeDriver {
         System.out.println("What is the students last name?: ");
         String lastName = userInput.nextLine();
 
-        System.out.println("What is the students ID number? (3 digits): ");
+        System.out.println("What is the students ID number? (100-999): ");
         int IDnum = userInput.nextInt();
         userInput.nextLine();
         //Checks if the ID number is in between 100-999
@@ -264,6 +265,7 @@ public class StudentGradeDriver {
             if (addArray[qg] != null) {
                 if (quizGrade > 100 || quizGrade < 50 || quizGrade < -1) {
                     System.out.println("Please enter valid grades.");
+                    pause();
                     return;
                 }
             }
@@ -286,6 +288,84 @@ public class StudentGradeDriver {
                 testGrade);
         writeStudents(addArray);
 
+    }
+    public void editStudents() throws IOException {
+        StudentGrade [] editStudentArr = readStudents();
+        System.out.println("Which student would you like to edit? " + "Enter the ID number of student: ");
+        Scanner kb = new Scanner(System.in);
+        int IDinput = kb.nextInt();
+       
+    
+        System.out.println("1. Change first name");
+        System.out.println("2. Change last name");
+        System.out.println("3. Change Classwork grade");
+        System.out.println("4. Change Quiz grade");
+        System.out.println("5. Change Test grade");
+        System.out.println("6. Exit");
+        System.out.println("Enter your choice: ");
+        int choiceInput = (kb.nextInt());
+        
+
+        switch(choiceInput){
+            case 1:
+                System.out.println("What would you like to change the first name to?:");
+                String firstNameInput = kb.next();
+                
+                for(int e = 0; e < editStudentArr.length; e++){ 
+                    if (editStudentArr[e] != null) {
+                        if (IDinput == editStudentArr[e].IDnum){
+                            editStudentArr[e].firstName = firstNameInput;
+                        }
+                    }
+                }
+            case 2: 
+                System.out.println("What would you like to change the last name to?:");
+                String lastNameinput = kb.next();
+
+                for(int e = 0; e < editStudentArr.length; e++){
+                    if(editStudentArr[e]!= null) {
+                        if (IDinput == editStudentArr[e].IDnum){
+                            editStudentArr[e].lastName = lastNameinput;
+                        }
+                    }
+                }
+            case 3: 
+                System.out.println("What would you like to change the classwork grade to?:");
+                Double cwGradeInput = kb.nextDouble();
+
+                for(int e = 0; e < editStudentArr.length; e++){
+                    if(editStudentArr[e]!= null) {
+                        if (IDinput == editStudentArr[e].IDnum){
+                            editStudentArr[e].classworkGrade = cwGradeInput;
+                        }           
+                    }
+                }
+            case 4: 
+                System.out.println("What would you like to change the quiz grade to?:");
+                Double quizGradeInput = kb.nextDouble();
+
+                for(int e = 0; e < editStudentArr.length; e++){
+                    if(editStudentArr[e]!= null) {
+                        if (IDinput == editStudentArr[e].IDnum){
+                            editStudentArr[e].quizGrade = quizGradeInput;
+                        }           
+                    }
+                }
+            case 5: 
+                System.out.println("What would you like to change the quiz grade to?:");
+                Double testGradeInput = kb.nextDouble();
+
+                for(int e = 0; e < editStudentArr.length; e++){
+                    if(editStudentArr[e]!= null) {
+                        if (IDinput == editStudentArr[e].IDnum){
+                            editStudentArr[e].testGrade = testGradeInput;
+                        }           
+                    }
+                }
+            case 6:
+                pause();
+        }  
+        writeStudents(editStudentArr);
     }
 
     // Quits the program.
