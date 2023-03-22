@@ -32,7 +32,6 @@ public class StudentGradeMenu {
          } else if (choice == 6){
             StudentGradeDriver editStudent = new StudentGradeDriver();
             editStudent.editStudents();
-            pause1.pause();
          } else if (choice == 7) {
             StudentGradeDriver quitProgram = new StudentGradeDriver();
             quitProgram.quit();

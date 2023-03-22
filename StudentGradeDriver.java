@@ -315,9 +315,14 @@ public class StudentGradeDriver {
                     if (editStudentArr[e] != null) {
                         if (IDinput == editStudentArr[e].IDnum){
                             editStudentArr[e].firstName = firstNameInput;
+                            writeStudents(editStudentArr);
+                            System.out.println("Your edit has been successful!");
                         }
                     }
                 }
+                return;
+                
+                
             case 2: 
                 System.out.println("What would you like to change the last name to?:");
                 String lastNameinput = kb.next();
@@ -326,9 +331,12 @@ public class StudentGradeDriver {
                     if(editStudentArr[e]!= null) {
                         if (IDinput == editStudentArr[e].IDnum){
                             editStudentArr[e].lastName = lastNameinput;
+                            writeStudents(editStudentArr);
+                            System.out.println("Your edit has been successful!");
                         }
                     }
                 }
+                return;
             case 3: 
                 System.out.println("What would you like to change the classwork grade to?:");
                 Double cwGradeInput = kb.nextDouble();
@@ -337,9 +345,12 @@ public class StudentGradeDriver {
                     if(editStudentArr[e]!= null) {
                         if (IDinput == editStudentArr[e].IDnum){
                             editStudentArr[e].classworkGrade = cwGradeInput;
+                            writeStudents(editStudentArr);
+                            System.out.println("Your edit has been successful!");
                         }           
                     }
                 }
+                return;
             case 4: 
                 System.out.println("What would you like to change the quiz grade to?:");
                 Double quizGradeInput = kb.nextDouble();
@@ -348,9 +359,12 @@ public class StudentGradeDriver {
                     if(editStudentArr[e]!= null) {
                         if (IDinput == editStudentArr[e].IDnum){
                             editStudentArr[e].quizGrade = quizGradeInput;
+                            writeStudents(editStudentArr);
+                            System.out.println("Your edit has been successful!");
                         }           
                     }
                 }
+                return;
             case 5: 
                 System.out.println("What would you like to change the quiz grade to?:");
                 Double testGradeInput = kb.nextDouble();
@@ -359,13 +373,17 @@ public class StudentGradeDriver {
                     if(editStudentArr[e]!= null) {
                         if (IDinput == editStudentArr[e].IDnum){
                             editStudentArr[e].testGrade = testGradeInput;
+                            writeStudents(editStudentArr);
+                            System.out.println("Your edit has been successful!");
                         }           
                     }
                 }
+                return;
             case 6:
                 pause();
+                return;
         }  
-        writeStudents(editStudentArr);
+        
     }
 
     // Quits the program.
